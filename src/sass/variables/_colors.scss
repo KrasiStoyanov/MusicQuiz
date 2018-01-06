@@ -1,0 +1,22 @@
+$white:          #fff;
+$gray:           #8D8D8D;
+$black:          #000;
+$matte-black:    #181A1D;
+
+$ink:            #3F59FF;
+$blue:           $ink;
+
+$primary:        $blue;
+$secondary:      $gray;
+$light:          $white;
+$dark:           $matte-black;
+
+$colors: (
+	"black":     $black
+);
+
+$theme-colors: (
+	"light":     $light
+);
+
+$body-color:     $gray;
