@@ -8,7 +8,10 @@ const buffer = require('vinyl-buffer');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
-
+var hb = require('gulp-hb');
+var htmlmin = require('gulp-htmlmin');
+var rename = require('gulp-rename');
+var hbLayouts = require('handlebars-layouts');
 
 gulp.task('babel', () => {
     browserify([
@@ -25,14 +28,22 @@ gulp.task('babel', () => {
 
 gulp.task('connect', function() {
     connect.server({
-        root: './',
+        root: 'build',
         livereload: true
     });
 });
 
-gulp.task('html', () => {
-    return gulp.src('index.html')
-        .pipe(connect.reload());
+gulp.task('html', function() {
+    return gulp.src('src/templates/pages/**/*.hbs')
+        .pipe(hb()
+            .partials('src/templates/partials/**/*.hbs')
+            .helpers(hbLayouts)
+        )
+        .pipe(htmlmin({}))
+        .pipe(rename({
+            extname: '.html'
+        }))
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('sass', function() {
@@ -58,10 +69,14 @@ gulp.task('assets', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['src/sass/**/*.scss'], ['sass']);
-    gulp.watch(['./*.html'], ['html']);
-    gulp.watch('src/js/**/*.js', ['babel']);
-    gulp.watch(['assets/{images,fonts}/**/*'], ['assets']);
+    gulp.watch(['src/sass/**/*.scss'], ['sass', 'reload']);
+    gulp.watch('src/js/**/*.js', ['babel', 'reload']);
+    gulp.watch(['assets/{images,fonts}/**/*'], ['assets', 'reload']);
+    gulp.watch(['src/{config,templates}/**/*'], ['html', 'reload']);
+});
+
+gulp.task('reload', function() {
+    gulp.src('build/*.html').pipe(connect.reload());
 });
 
 gulp.task('build', ['html', 'sass', 'assets']);
