@@ -52,11 +52,18 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('build/css'));
 });
 
+gulp.task('assets', function() {
+    return gulp.src('assets/**/*')
+        .pipe(gulp.dest('build'));
+});
 
 gulp.task('watch', function() {
     gulp.watch(['src/sass/**/*.scss'], ['sass']);
     gulp.watch(['./*.html'], ['html']);
     gulp.watch('src/js/**/*.js', ['babel']);
+    gulp.watch(['assets/{images,fonts}/**/*'], ['assets']);
 });
 
-gulp.task('development', ['babel', 'connect', 'watch'])
+gulp.task('build', ['html', 'sass', 'assets']);
+
+gulp.task('development', ['build', 'connect', 'watch'])
