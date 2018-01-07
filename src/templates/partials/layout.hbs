@@ -10,9 +10,13 @@
 
 <body>
     {{> navbar}}
+	
+	<div id="content-wrapper">
+	    {{#block 'body'}}
+	    {{/block}}
+	</div>
 
-    {{#block 'body'}}
-    {{/block}}
+	{{> footer}}
 
     <script src="./build/js/main.js"></script>
 </body>
