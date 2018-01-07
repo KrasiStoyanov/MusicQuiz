@@ -1,22 +1,8 @@
-$white:          #fff;
-$gray:           #8D8D8D;
-$black:          #000;
-$matte-black:    #181A1D;
+$white:      #fff;
+$black:      #000;
 
-$ink:            #3F59FF;
-$blue:           $ink;
+$primary:    $white;
+$dark:       #212121;
 
-$primary:        $blue;
-$secondary:      $gray;
-$light:          $white;
-$dark:           $matte-black;
-
-$colors: (
-	"black":     $black
-);
-
-$theme-colors: (
-	"light":     $light
-);
-
-$body-color:     $gray;
+$body-bg:    $dark;
+$body-color: rgba($white, .7);
