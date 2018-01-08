@@ -6,7 +6,7 @@
 
 	.slide {
 		height: 300px;
-		margin: 0 60px;
+		margin: 0 75px;
 		opacity: .3;
 		position: relative;
 		cursor: pointer;
@@ -20,7 +20,7 @@
 			bottom: 0;
 			left: 40px;
 			z-index: -1;
-			box-shadow: 0 0 25px 0 transparentize($black, .9), 0 10px 50px 0 transparentize($black, .9), 0 20px 75px 0 transparentize($black, .9), 0 20px 100px 0 transparentize($black, .4);
+			box-shadow: 0 20px 100px 0 transparentize($black, .4);
 		}
 
 		&:hover:not(.center) {

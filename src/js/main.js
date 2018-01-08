@@ -3,7 +3,7 @@
 import * as slidesManager from './modules/slides';
 
 $(document).ready(function () {
-	let initialCenteredSlide = 3;
+	let initialCenteredSlide = 0;
 
 	slidesManager.scaleSlides();
 	setTimeout(() => {
@@ -16,5 +16,9 @@ $(document).ready(function () {
 		nextSlideId = nextSlideId.slice(nextSlideId.length - 1, nextSlideId.length);
 
 		slidesManager.moveSlide(nextSlideId);
+	});
+
+	$(window).resize(() => {
+		slidesManager.moveSlide(slidesManager.getCurrentSlideId());
 	});
 });

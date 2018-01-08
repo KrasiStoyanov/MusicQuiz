@@ -9,6 +9,8 @@ const gridGutter = 30;
 const columnWidth = (containerWidth / 12) - gridGutter;
 const slideWidth = (columnWidth * 8) + (gridGutter * 7);
 
+let currentSlideId = 0;
+
 function scaleSlides () {
 	slides.each((index, item) => {
 		$(item)
@@ -27,20 +29,24 @@ function moveSlide(id) {
 	let windowWidth = $(window).width();
 	let windowHalfWidth = windowWidth / 2;
 	let slideThatNeedsToBeCentered = $(slides.filter(`#slide-${id}`)[0]);
-	let howMuchToMoveWith;
 
-	let offsetLeft = slideThatNeedsToBeCentered.offset().left;
-	let moveToHalfWindow = offsetLeft - windowHalfWidth;
-	console.log('offset ' + offsetLeft);
+	let moveSlideFromMostLeftToCenter = windowHalfWidth - ((slideWidth / 2) + slideGutter);
+	let withHowMuchToMoveSlideWidth = id * slideWidth;
+	let withHowMuchToMoveSlideGutter = id * (slideGutter * 2);
+	let howMuchToMoveWith = (withHowMuchToMoveSlideWidth + withHowMuchToMoveSlideGutter) - moveSlideFromMostLeftToCenter;
 
-	howMuchToMoveWith = -moveToHalfWindow - (slideWidth / 2);
-
-	slider.css('left', howMuchToMoveWith);
+	slider.css('left', -howMuchToMoveWith);
 	slides.removeClass('center');
 	slideThatNeedsToBeCentered.addClass('center');
+	currentSlideId = id;
+}
+
+function getCurrentSlideId () {
+	return currentSlideId;
 }
 
 export {
 	scaleSlides,
-	moveSlide
+	moveSlide,
+	getCurrentSlideId
 }
