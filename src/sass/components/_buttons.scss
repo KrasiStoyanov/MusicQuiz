@@ -1,5 +1,81 @@
 .btn {
 	border: 0;
+	position: relative;
+}
+
+.btn-outline-light {
+	color: $white;
+	border: 1px solid $light;
+	@include hover {
+		background-color: transparent;
+		color: $white;
+		border-color: $white;
+	}
+
+	&:disabled,
+	&.disabled {
+		color: $light;
+		@include hover {
+			border-color: $light;
+		}
+	}
+
+	&:not([disabled]):not(.disabled):active,
+	&:not([disabled]):not(.disabled):focus,
+	&:not([disabled]):not(.disabled):active:focus,
+	&.active,
+	&.focus,
+	&.passed {
+		outline: 0;
+		background-color: transparent;
+		border-color: $white;
+		box-shadow: none;
+	}
+
+	.result {
+		width: $spacer * 4;
+		height: $spacer * 4;
+		line-height: $spacer * 4;
+		font-size: $small-font-size;
+		text-align: center;
+		border-radius: $border-radius-lg;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		margin: auto;
+		opacity: 0;
+		visibility: hidden;
+		@include transition(all .3s ease-in-out);
+
+		i {
+			line-height: inherit;
+		}
+	}
+
+	&.passed {
+
+		.result {
+			color: $dark;
+			background-color: $white;
+		}
+	}
+
+	&.failed {
+		.result {
+			color: $white;
+			background-color: #373737;
+		}
+	}
+
+	&.passed,
+	&.failed {
+		.result {
+			top: -($spacer * 2);
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 }
 
 .btn-circle {
@@ -14,7 +90,7 @@
 		font-size: $font-size-base;
 
 		i {
-			line-height: 60px;
+			line-height: inherit;
 		}
 	}
 }
@@ -26,4 +102,9 @@
 		color: $white;
 		background-color: rgba($white, .2);
 	}
+}
+
+.btn-md {
+	min-width: 140px;
+	@include button-size(0, $spacer * 7, $font-size-base, $btn-line-height-md, $border-radius-md);
 }

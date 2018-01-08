@@ -1,6 +1,7 @@
 'use strict';
 
 import * as slidesManager from './modules/slides';
+import * as quizManager from './modules/quizes';
 
 $(document).ready(function () {
 	let initialCenteredSlide = 0;
@@ -21,4 +22,9 @@ $(document).ready(function () {
 	$(window).resize(() => {
 		slidesManager.moveSlide(slidesManager.getCurrentSlideId());
 	});
+	
+	if ($('#quiz').length > 0) {
+		let quizId = parseInt($('#quiz').attr('data-quiz-id'));
+		quizManager.setCurrentQuiz(quizId);
+	}
 });

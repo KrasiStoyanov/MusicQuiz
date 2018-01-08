@@ -2,18 +2,19 @@ $white:          #fff;
 $black:          #000;
 
 $primary:        $white;
+$light:          transparentize($white, .9);
 $dark:           #212121;
 $transparent:    transparent;
 
-$gray-100: transparentize($dark, .9);
-$gray-200: transparentize($dark, .8);
-$gray-300: transparentize($dark, .7);
-$gray-400: transparentize($dark, .6);
-$gray-500: transparentize($dark, .5);
-$gray-600: transparentize($dark, .4);
-$gray-700: transparentize($dark, .3);
-$gray-800: transparentize($dark, .2);
-$gray-900: transparentize($dark, .1);
+$gray-100:       transparentize($dark, .9);
+$gray-200:       transparentize($dark, .8);
+$gray-300:       transparentize($dark, .7);
+$gray-400:       transparentize($dark, .6);
+$gray-500:       transparentize($dark, .5);
+$gray-600:       transparentize($dark, .4);
+$gray-700:       transparentize($dark, .3);
+$gray-800:       transparentize($dark, .2);
+$gray-900:       transparentize($dark, .1);
 
 $theme-colors: (
 	"transparent": rgba($white, .1)

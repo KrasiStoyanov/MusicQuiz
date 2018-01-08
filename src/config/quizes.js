@@ -1,11 +1,7 @@
-{
+export default {
 	"list": [
 		{
 			"id": 0,
-			"title": "Name the band by song name",
-			"subtitle": "Guess band by one of their songs",
-			"coverImage": "./images/slide-1.jpg",
-			"link": "./quiz-1",
 			"questions": [
 				{
 					"id": 0,
@@ -118,34 +114,6 @@
 					]
 				}
 			]
-		},
-		{
-			"id": 1,
-			"title": "Song based on band",
-			"subtitle": "Guess the correct hit song of each band",
-			"coverImage": "./images/slide-2.jpg",
-			"link": "./quiz-2"
-		},
-		{
-			"id": 2,
-			"title": "Genre based on band",
-			"subtitle": "Guess the genre of each one of the bands",
-			"coverImage": "./images/slide-3.jpg",
-			"link": "./quiz-3"
-		},
-		{
-			"id": 3,
-			"title": "Album based on band",
-			"subtitle": "Choose the correct album for each band",
-			"coverImage": "./images/slide-4.jpg",
-			"link": "./quiz-4"
-		},
-		{
-			"id": 4,
-			"title": "Vocalist based on band",
-			"subtitle": "Guess the lead singer of each band",
-			"coverImage": "./images/slide-5.jpg",
-			"link": "./quiz-5"
 		}
 	]
 }

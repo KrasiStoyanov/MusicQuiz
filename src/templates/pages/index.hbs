@@ -1,15 +1,15 @@
-{{#extend 'layout'}}
+{{#extend 'layout' title="Home" isAtHome=true}}
 	{{#content 'body'}}
 		<div id="slider" class="d-flex flex-row align-items-center">
 			{{#each quizes.list}}
 			<div class="slide" id="slide-{{id}}">
 				<div class="content h-100 d-flex flex-row align-items-end p-8" style="background-image: url('{{coverImage}}');">
 					<div class="text w-100">
-						<h3>{{title}}</h3>
+						<a href="{{link}}.html"><h3>{{title}}</h3></a>
 						<h6 class="description mb-0">{{subtitle}}</h6>
 					</div>
 					<div class="link">
-						<a href="" class="btn btn-lg btn-circle btn-transparent play-button"><i class="icon-play2"></i></a>
+						<a href="{{link}}.html" class="btn btn-lg btn-circle btn-transparent play-button"><i class="icon-play2"></i></a>
 					</div>
 				</div>
 			</div>
