@@ -41,6 +41,7 @@
 				bottom: 0;
 				left: 0;
 				background-color: $gray-500;
+				@include transition(background-color .3s ease-in-out);
 			}
 
 			.text,
@@ -57,6 +58,14 @@
 		&.center {
 			height: 450px;
 			opacity: 1;
+
+			&:hover {
+				.content {
+					&::before {
+						background-color: $gray-700;
+					}
+				}
+			}
 		}
 	}
 }

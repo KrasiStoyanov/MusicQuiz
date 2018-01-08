@@ -10,13 +10,13 @@ const columnWidth = (containerWidth / 12) - gridGutter;
 const slideWidth = (columnWidth * 8) + (gridGutter * 7);
 
 function scaleSlides () {
-	slides.each(function (index, item) {
+	slides.each((index, item) => {
 		$(item)
 			.css('flex', `0 0 ${slideWidth}px`)
 			.css('max-width', slideWidth);
 	});
 
-	setTimeout(function () {
+	setTimeout(() => {
 		slider
 			.css('opacity', 1)
 			.css('visibility', 'visible');
@@ -29,17 +29,15 @@ function moveSlide(id) {
 	let slideThatNeedsToBeCentered = $(slides.filter(`#slide-${id}`)[0]);
 	let howMuchToMoveWith;
 
-	setTimeout(function () {
-		let offsetLeft = slideThatNeedsToBeCentered.offset().left;
-		let moveToHalfWindow = offsetLeft - windowHalfWidth;
-		console.log(moveToHalfWindow)
+	let offsetLeft = slideThatNeedsToBeCentered.offset().left;
+	let moveToHalfWindow = offsetLeft - windowHalfWidth;
+	console.log('offset ' + offsetLeft);
 
-		howMuchToMoveWith = -moveToHalfWindow - (slideWidth / 2);
+	howMuchToMoveWith = -moveToHalfWindow - (slideWidth / 2);
 
-		slider.css('left', howMuchToMoveWith);
-		slides.removeClass('center');
-		slideThatNeedsToBeCentered.addClass('center');
-	}, 300);
+	slider.css('left', howMuchToMoveWith);
+	slides.removeClass('center');
+	slideThatNeedsToBeCentered.addClass('center');
 }
 
 export {
