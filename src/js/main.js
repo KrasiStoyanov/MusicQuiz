@@ -2,6 +2,7 @@
 
 import * as slidesManager from './modules/slides';
 import * as quizManager from './modules/quizes';
+import * as scoreScreenManager from './modules/results';
 
 $(document).ready(function () {
 	let initialCenteredSlide = 0;

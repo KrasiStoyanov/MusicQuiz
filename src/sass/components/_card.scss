@@ -1,0 +1,70 @@
+.card {
+	height: 350px;
+	max-height: 350px;
+	border-radius: $border-radius;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	bottom: 0;
+	border: 0;
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	@include transition(all .3s ease-in-out);
+
+	&.visible {
+		opacity: 1;
+		visibility: visible;
+	}
+		
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		box-shadow: 0 20px 50px 0 transparentize($black, .9);
+		@include transition(all .3s ease-in-out);
+	}
+
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: $gray-500;
+		border-radius: $border-radius;
+		@include transition(background-color .3s ease-in-out);
+	}
+
+	&:hover {
+		bottom: $spacer * 5;
+
+		&:before {
+			top: 50px;
+			right: 25px;
+			left: 25px;
+			box-shadow: 0 20px 80px 0 transparentize($black, .5);
+		}
+
+		&::after {
+			background-color: $gray-700;
+		}
+	}
+
+	.text,
+	.link {
+		z-index: 1;
+	}
+
+	.description {
+		color: $body-color;
+		font-weight: normal;
+	}
+}

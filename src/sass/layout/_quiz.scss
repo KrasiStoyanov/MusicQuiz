@@ -1,0 +1,70 @@
+#quiz {
+	.question {
+		@include transition(all .5s ease-in-out);
+
+		&.fade-away {
+			opacity: 0;
+			visibility: hidden;
+			margin-left: $spacer * 10;
+		}
+	}
+
+	#next-question {
+		position: absolute;
+		right: 70px;
+		bottom: 70px;
+		opacity: 0;
+		visibility: hidden;
+		@include transition(all .3s ease-in-out);
+
+		&.visible {
+			opacity: 1;
+			visibility: visible;
+
+			i {
+				opacity: 1;
+				visibility: visible;
+				margin-right: 0;
+			}
+		}
+
+		i {
+			opacity: 0;
+			visibility: hidden;
+			margin-right: $spacer * 5;
+			@include transition(all .3s ease-in-out);
+		}
+	}
+
+	#score {
+		opacity: 0;
+		visibility: hidden;
+
+		&.visible {
+			opacity: 1;
+			visibility: visible;
+		}
+		
+		.heading {
+			color: $body-color;
+
+			strong {
+				color: $white;
+			}
+		}
+	}
+
+	#similar-quizes {
+		opacity: 0;
+		visibility: hidden;
+
+		&.visible {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.heading {
+			color: $body-color;
+		}
+	}
+}

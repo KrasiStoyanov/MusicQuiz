@@ -102,6 +102,17 @@
 		color: $white;
 		background-color: rgba($white, .2);
 	}
+
+	&:not([disabled]):not(.disabled):active,
+	&:not([disabled]):not(.disabled):focus,
+	&:not([disabled]):not(.disabled):active:focus,
+	&.active,
+	&.focus,
+	&.passed {
+		outline: 0;
+		background-color: rgba($white, .2);
+		box-shadow: none;
+	}
 }
 
 .btn-md {
