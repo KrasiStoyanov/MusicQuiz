@@ -1,0 +1,34 @@
+{
+	"list": [
+		{
+			"id": 0,
+			"title": "Name the band by song name",
+			"subtitle": "Guess band by one of their songs",
+			"coverImage": "./images/slide-1.jpg"
+		},
+		{
+			"id": 1,
+			"title": "Song based on band",
+			"subtitle": "Guess the correct hit song of each band",
+			"coverImage": "./images/slide-2.jpg"
+		},
+		{
+			"id": 2,
+			"title": "Genre based on band",
+			"subtitle": "Guess the genre of each one of the bands",
+			"coverImage": "./images/slide-3.jpg"
+		},
+		{
+			"id": 3,
+			"title": "Album based on band",
+			"subtitle": "Choose the correct album for each band",
+			"coverImage": "./images/slide-4.jpg"
+		},
+		{
+			"id": 4,
+			"title": "Vocalist based on band",
+			"subtitle": "Guess the lead singer of each band",
+			"coverImage": "./images/slide-5.jpg"
+		}
+	]
+}

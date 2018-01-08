@@ -1,0 +1,62 @@
+#slider {
+	position: relative;
+	opacity: 0;
+	visibility: hidden;
+	@include transition(all .3s ease-in-out);
+
+	.slide {
+		height: 300px;
+		margin: 0 60px;
+		opacity: .3;
+		position: relative;
+		cursor: pointer;
+		@include transition(all .3s ease-in-out);
+		
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50px;
+			right: 40px;
+			bottom: 0;
+			left: 40px;
+			z-index: -1;
+			box-shadow: 0 0 25px 0 transparentize($black, .9), 0 10px 50px 0 transparentize($black, .9), 0 20px 75px 0 transparentize($black, .9), 0 20px 100px 0 transparentize($black, .4);
+		}
+
+		&:hover:not(.center) {
+			opacity: .5;
+		}
+
+		.content {
+			background-position: center;
+			background-size: cover;
+			position: relative;
+
+			&::before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: $gray-500;
+			}
+
+			.text,
+			.link {
+				z-index: 1;
+			}
+
+			.description {
+				color: $body-color;
+				font-weight: normal;
+			}
+		}
+
+		&.center {
+			height: 450px;
+			opacity: 1;
+		}
+	}
+}

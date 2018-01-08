@@ -5,20 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quizco</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
     {{> navbar}}
 	
-	<div id="content-wrapper">
+	<div id="content-wrapper" class="d-flex flex-column justify-content-center">
 	    {{#block 'body'}}
 	    {{/block}}
 	</div>
 
 	{{> footer}}
 
-    <script src="./build/js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

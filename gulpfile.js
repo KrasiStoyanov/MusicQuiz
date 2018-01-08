@@ -36,6 +36,7 @@ gulp.task('connect', function() {
 gulp.task('html', function() {
     return gulp.src('src/templates/pages/**/*.hbs')
         .pipe(hb()
+            .data('src/config/quizes.json')
             .partials('src/templates/partials/**/*.hbs')
             .helpers(hbLayouts)
         )
@@ -79,6 +80,6 @@ gulp.task('reload', function() {
     gulp.src('build/*.html').pipe(connect.reload());
 });
 
-gulp.task('build', ['html', 'sass', 'assets']);
+gulp.task('build', ['html', 'babel', 'sass', 'assets']);
 
 gulp.task('development', ['build', 'connect', 'watch'])
