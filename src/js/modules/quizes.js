@@ -9,9 +9,16 @@ let question;
 let answer;
 let correctAnswer;
 let passedQuestions = 0;
-let correctQuestions = 0;
+let correctAnswers = 0;
+
 const maxAmountOfQuestions = 10;
 
+/**
+ * @function
+ * @name setCurrentQuiz
+ * @param { number } id - The ID of the quiz.
+ * @description Get the current quiz data and call a function to display it.
+ */
 function setCurrentQuiz (id) {
 	for (let index in quizes.list) {
 		let quiz = quizes.list[index];
@@ -26,6 +33,11 @@ function setCurrentQuiz (id) {
 	displayCurrentQuestion();
 }
 
+/**
+ * @function
+ * @name displayCurrentQuestion
+ * @description Display the current quiz.
+ */
 function displayCurrentQuestion () {
 	$('#quiz .question')
 		.removeClass('fade-away')
@@ -41,6 +53,11 @@ function displayCurrentQuestion () {
 	}
 }
 
+/**
+ * @function
+ * @name generateRandomQuestion
+ * @description Generate a random question.
+ */
 function generateRandomQuestion () {
 	let length = questions.length;
 	let randomIndex = Math.floor(Math.random() * questions.length);
@@ -50,6 +67,11 @@ function generateRandomQuestion () {
 	questions.splice(randomIndex, 1);
 }
 
+/**
+ * @function
+ * @name generateQuestionTitle
+ * @description Create the visual element for the title of the question.
+ */
 function generateQuestionTitle () {
 	let title = $('<h4 class="mb-8 font-weight-normal"></h4>');
 
@@ -57,6 +79,11 @@ function generateQuestionTitle () {
 	$('#quiz .question').append(title);
 }
 
+/**
+ * @function
+ * @name generateOption
+ * @description Create the visual element for the option button.
+ */
 function generateOption () {
 	let button = $('<button class="btn btn-md btn-outline-light mr-5 option"></button>');
 	let result = $('<div class="result"></div>');
@@ -75,6 +102,11 @@ function generateOption () {
 	$('#quiz .question').append(button);
 }
 
+/**
+ * @function
+ * @name selectAnAnswer
+ * @description Update the render when an answer has been chosen.
+ */
 function selectAnAnswer (answer, option) {
 	let hasPassed = checkIfAnswerIsCorrect(answer);
 	let correctOption = option;
@@ -111,11 +143,16 @@ function selectAnAnswer (answer, option) {
 	showNextButton();
 }
 
+/**
+ * @function
+ * @name selectAnAnswer
+ * @description Check if the chosen answer is correct.
+ */
 function checkIfAnswerIsCorrect (answer) {
 	correctAnswer = question.correctAnswer.toLowerCase();
 	answer = answer.toLowerCase();
 	if (answer === correctAnswer) {
-		correctQuestions += 1;
+		correctAnswers += 1;
 
 		return true;
 	} else {
@@ -123,20 +160,38 @@ function checkIfAnswerIsCorrect (answer) {
 	}
 }
 
+/**
+ * @function
+ * @name showNextButton
+ * @description Show the button that goes to the next question.
+ */
 function showNextButton () {
 	$('#quiz #next-question')
 		.addClass('visible')
-		.click(() => {
+		.click((e) => {
 			nextQuestion();
+
+			let button = $(e.currentTarget);
+			button.unbind();
 		});
 }
 
+/**
+ * @function
+ * @name hideNextButton
+ * @description Hide the button that goes to the next question.
+ */
 function hideNextButton () {
 	$('#quiz #next-question')
 		.removeClass('visible')
 		.unbind('click');
 }
 
+/**
+ * @function
+ * @name nextQuestion
+ * @description Update the render with the new question.
+ */
 function nextQuestion () {
 	$('#quiz .question').addClass('fade-away');
 	setTimeout(() => {
@@ -144,6 +199,11 @@ function nextQuestion () {
 	}, 500);
 }
 
+/**
+ * @function
+ * @name updateProgressBar
+ * @description Update the progress bar's width.
+ */
 function updateProgressBar () {
 	let windowWidth = $(window).width();
 	let singleQuestionWidth = windowWidth / 10;
@@ -151,6 +211,11 @@ function updateProgressBar () {
 	$('#progress .current-progress').css('width', singleQuestionWidth * passedQuestions);
 }
 
+/**
+ * @function
+ * @name controlQuestions
+ * @description Control the UI whether you are on the questions screen or on the results screen.
+ */
 function controlQuestions () {
 	if (questions.length <= 0) {
 		displayScoreScreen();
@@ -159,14 +224,29 @@ function controlQuestions () {
 	}
 }
 
+/**
+ * @function
+ * @name getCurrentQuiz
+ * @return { object } The current quiz.
+ */
 function getCurrentQuiz () {
 	return currentQuiz;
 }
 
-function getCorrectQuestions () {
-	return correctQuestions;
+/**
+ * @function
+ * @name getCorrectAnswers
+ * @return { number } The amount of correct questions.
+ */
+function getCorrectAnswers () {
+	return correctAnswers;
 }
 
+/**
+ * @function
+ * @name getMaxAmountOfQuestions
+ * @return { number } The maximum amount of questions there can be.
+ */
 function getMaxAmountOfQuestions () {
 	return maxAmountOfQuestions;
 }
@@ -174,7 +254,7 @@ function getMaxAmountOfQuestions () {
 export {
 	setCurrentQuiz,
 	getCurrentQuiz,
-	getCorrectQuestions,
+	getCorrectAnswers,
 	getMaxAmountOfQuestions,
 	hideNextButton
 }

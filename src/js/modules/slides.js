@@ -11,6 +11,11 @@ const slideWidth = (columnWidth * 8) + (gridGutter * 7);
 
 let currentSlideId = 0;
 
+/**
+ * @function
+ * @name scaleSlides
+ * @description Scale the slides to the appropriate width.
+ */
 function scaleSlides () {
 	slides.each((index, item) => {
 		$(item)
@@ -25,6 +30,12 @@ function scaleSlides () {
 	}, 300);
 }
 
+/**
+ * @function
+ * @name scaleSlides
+ * @param { number } id - The ID of the slide that should be next.
+ * @description Move the slides based on the user's choice it should be either movement to the left or right.
+ */
 function moveSlide(id) {
 	let windowWidth = $(window).width();
 	let windowHalfWidth = windowWidth / 2;

@@ -1,11 +1,16 @@
 'use strict';
 
 import quizes from '../../config/quizes';
-import { getCurrentQuiz, getCorrectQuestions, getMaxAmountOfQuestions, hideNextButton } from './quizes';
+import { getCurrentQuiz, getCorrectAnswers, getMaxAmountOfQuestions, hideNextButton } from './quizes';
 
+/**
+ * @function
+ * @name displayScoreScreen
+ * @description Display the score screen.
+ */
 function displayScoreScreen() {
 	let maxAmountOfQuestions = getMaxAmountOfQuestions();
-	let correctQuestions = getCorrectQuestions();
+	let correctQuestions = getCorrectAnswers();
 	let scoreText = $(`<h4 class="heading font-weight-normal">Congratulations! You scored <strong class="">${correctQuestions}/${maxAmountOfQuestions}</strong>`)
 
 	$('#quiz')
@@ -31,6 +36,11 @@ function displayScoreScreen() {
 	displaySimilarQuizes();
 }
 
+/**
+ * @function
+ * @name displaySimilarQuizes
+ * @description Display the similar quizes.
+ */
 function displaySimilarQuizes () {
 	let currentQuiz = getCurrentQuiz();
 	for (let index in quizes.list) {
@@ -41,6 +51,11 @@ function displaySimilarQuizes () {
 	}
 }
 
+/**
+ * @function
+ * @name displayQuizCard
+ * @description Create the visual elements for the quiz card.
+ */
 function displayQuizCard (quiz) {
 	let column = $('<div class="col-md-3"></div>');
 	let card = $('<div class="card d-flex flex-row align-items-end p-8"></div>');
