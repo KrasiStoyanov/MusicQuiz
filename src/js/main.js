@@ -28,4 +28,8 @@ $(document).ready(function () {
 		let quizId = parseInt($('#quiz').attr('data-quiz-id'));
 		quizManager.setCurrentQuiz(quizId);
 	}
+	
+	var scripts = $('body script');
+	var badDiv = $(scripts[1]).next();
+	badDiv.remove();
 });

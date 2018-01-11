@@ -562,8 +562,8 @@ export default {
 				},
 				{
 					"id": 7,
-					"question": "Disturbed",
-					"correctAnswer": "David Draiman",
+					"question": "Lamb of God",
+					"correctAnswer": "Randy Blythe",
 					"answers": [
 						"David Draiman",
 						"Frank Mullen",
