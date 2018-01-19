@@ -21,15 +21,12 @@ $(document).ready(function () {
 	});
 
 	$(window).resize(() => {
-		slidesManager.moveSlide(slidesManager.getCurrentSlideId());
+		let currentSlideId = slidesManager.getCurrentSlideId();
+		slidesManager.moveSlide(currentSlideId);
 	});
 	
 	if ($('#quiz').length > 0) {
 		let quizId = parseInt($('#quiz').attr('data-quiz-id'));
 		quizManager.setCurrentQuiz(quizId);
 	}
-	
-	var scripts = $('body script');
-	var badDiv = $(scripts[1]).next();
-	badDiv.remove();
 });

@@ -20,15 +20,9 @@ const maxAmountOfQuestions = 10;
  * @description Get the current quiz data and call a function to display it.
  */
 function setCurrentQuiz (id) {
-	for (let index in quizes.list) {
-		let quiz = quizes.list[index];
-		if (quiz.id === id) {
-			currentQuiz = quiz;
-			questions = quiz.questions;
-
-			break;
-		}
-	}
+	let quizList = quizes.list;
+	currentQuiz = quizList.filter(q => q.id === id)[0];
+	questions = currentQuiz.questions;
 
 	displayCurrentQuestion();
 }
@@ -46,10 +40,11 @@ function displayCurrentQuestion () {
 	hideNextButton();
 	generateRandomQuestion();
 	generateQuestionTitle();
-	for (let jndex in question.answers) {
-		answer = question.answers[jndex];
 
-		generateOption();
+	for (let index in question.answers) {
+		let answer = question.answers[index];
+
+		generateOption(answer);
 	}
 }
 
@@ -59,8 +54,8 @@ function displayCurrentQuestion () {
  * @description Generate a random question.
  */
 function generateRandomQuestion () {
-	let length = questions.length;
-	let randomIndex = Math.floor(Math.random() * questions.length);
+	let lengthOfQuestions = questions.length;
+	let randomIndex = Math.floor(Math.random() * lengthOfQuestions);
 	let randomQuestion = questions[randomIndex];
 
 	question = randomQuestion;
@@ -82,22 +77,24 @@ function generateQuestionTitle () {
 /**
  * @function
  * @name generateOption
+ * @param { string } answerText - The current answer text.
  * @description Create the visual element for the option button.
  */
-function generateOption () {
+function generateOption (answerText) {
 	let button = $('<button class="btn btn-md btn-outline-light mr-5 option"></button>');
 	let result = $('<div class="result"></div>');
 	let icon = $('<i class=""></i>');
 
-	button.click((e) => {
-		let answer = $(e.currentTarget).text();
-
-		selectAnAnswer(answer, $(e.currentTarget));
-	});
-
 	result.append(icon);
-	button.text(answer);
+	button.text(answerText);
 	button.append(result);
+
+	button.click((e) => {
+		let clickedButton = $(e.currentTarget);
+		let selectedAnswer = clickedButton.text();
+
+		selectAnAnswer(selectedAnswer, clickedButton);
+	});
 
 	$('#quiz .question').append(button);
 }
@@ -105,10 +102,12 @@ function generateOption () {
 /**
  * @function
  * @name selectAnAnswer
+ * @param { string } selectedAnswer - The selected answer text.
+ * @param { DOM element } option - The selected option.
  * @description Update the render when an answer has been chosen.
  */
-function selectAnAnswer (answer, option) {
-	let hasPassed = checkIfAnswerIsCorrect(answer);
+function selectAnAnswer (selectedAnswer, option) {
+	let hasPassed = checkIfAnswerIsCorrect(selectedAnswer);
 	let correctOption = option;
 	let icon = correctOption.find('i');
 
@@ -121,7 +120,9 @@ function selectAnAnswer (answer, option) {
 	} else {
 		$('#quiz .option').each((index, item) => {
 			item = $(item);
-			let ifCorrect = item.text().toLowerCase() === correctAnswer.toLowerCase();
+			let currentOption = $(item);
+			let currentAnswer = currentOption.text().toLowerCase();
+			let ifCorrect = currentAnswer === correctAnswer.toLowerCase();
 			if (ifCorrect) {
 				correctOption = item;
 
@@ -145,7 +146,8 @@ function selectAnAnswer (answer, option) {
 
 /**
  * @function
- * @name selectAnAnswer
+ * @name checkIfAnswerIsCorrect
+ * @param { string } answer - The answer that needs to be processed.
  * @description Check if the chosen answer is correct.
  */
 function checkIfAnswerIsCorrect (answer) {

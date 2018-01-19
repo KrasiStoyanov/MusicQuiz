@@ -36,7 +36,7 @@ function scaleSlides () {
  * @param { number } id - The ID of the slide that should be next.
  * @description Move the slides based on the user's choice it should be either movement to the left or right.
  */
-function moveSlide(id) {
+function moveSlide (id) {
 	let windowWidth = $(window).width();
 	let windowHalfWidth = windowWidth / 2;
 	let slideThatNeedsToBeCentered = $(slides.filter(`#slide-${id}`)[0]);
@@ -52,6 +52,11 @@ function moveSlide(id) {
 	currentSlideId = id;
 }
 
+/**
+ * @function
+ * @name getCurrentSlideId
+ * @return { number } The current slide ID.
+ */
 function getCurrentSlideId () {
 	return currentSlideId;
 }

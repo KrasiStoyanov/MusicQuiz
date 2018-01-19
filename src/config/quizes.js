@@ -21,11 +21,11 @@ export default {
 				{
 					"id": 1,
 					"question": "Master Passion Greed",
-					"correctAnswer": "Nigtwish",
+					"correctAnswer": "Nightwish",
 					"answers": [
 						"Slipknot",
 						"Death",
-						"Nigtwish",
+						"Nightwish",
 						"Sepultura"
 					]
 				},
@@ -67,7 +67,7 @@ export default {
 					"question": "All Shall Fall",
 					"correctAnswer": "Immortal",
 					"answers": [
-						"Nigtwish",
+						"Nightwish",
 						"Slipknot",
 						"Immortal",
 						"Twisted Sister"
@@ -90,7 +90,7 @@ export default {
 					"correctAnswer": "Twisted Sister",
 					"answers": [
 						"Twisted Sister",
-						"Nigtwish",
+						"Nightwish",
 						"Death",
 						"Iron Maiden"
 					]

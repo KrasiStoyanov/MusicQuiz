@@ -8,7 +8,7 @@ import { getCurrentQuiz, getCorrectAnswers, getMaxAmountOfQuestions, hideNextBut
  * @name displayScoreScreen
  * @description Display the score screen.
  */
-function displayScoreScreen() {
+function displayScoreScreen () {
 	let maxAmountOfQuestions = getMaxAmountOfQuestions();
 	let correctQuestions = getCorrectAnswers();
 	let scoreText = $(`<h4 class="heading font-weight-normal">Congratulations! You scored <strong class="">${correctQuestions}/${maxAmountOfQuestions}</strong>`)
@@ -54,6 +54,7 @@ function displaySimilarQuizes () {
 /**
  * @function
  * @name displayQuizCard
+ * @param { object } quiz - The current quiz.
  * @description Create the visual elements for the quiz card.
  */
 function displayQuizCard (quiz) {
